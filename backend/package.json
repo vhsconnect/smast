@@ -1,10 +1,12 @@
 {
-  "name": "backend",
+  "name": "smast",
   "version": "1.0.0",
   "description": "backend for smast",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=production webpack",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,16 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "mongoose": "^5.4.17"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
   }
 }

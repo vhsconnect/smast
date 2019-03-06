@@ -5,10 +5,12 @@ const cors = require('cors');
 const PORT = 3000; 
 const mongoose = require('mongoose');
 const Players2 = require('./players.model');
+const path = require('path');
 
 app.use(cors());
 app.use(bodyParser.json());
-
+app.use(express.static(path.join(__dirname, '../build')))
+app.use(express.static('../client'));
 
 mongoose.connect('mongodb://localhost/smastmain', {useNewUrlParser: true})
 
@@ -23,17 +25,17 @@ connection.once('open', function(){
     console.log('connected successfuly to MongoDB :)')
 })
 
+// let string = path.resolve(__dirname, '../client/index.html')
+
+app.get('/', (req, res)=> {
+    res.sendFile(path.resolve(__dirname, '../client/index.html'));
+    // res.send(path.resolve(__dirname, '../client/index.html'))
+})
+
+
 //create Router to handle localhost3000/smast requests
 const smastRoutes = express.Router();
 app.use('/smastmain', smastRoutes);
-
-//main get route
-// smastRoutes.get('/', () => {
-//     Players2.find((err, doc) {
-//         if (err) console.log('You are expriencing an internal / Database error');
-//         else res.json(doc);
-//     })
-// })
 
 //get by id 
 smastRoutes.get('/:name', (req, res) => {
