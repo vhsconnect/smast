@@ -1,6 +1,13 @@
 html {
     box-sizing: border-box;
-    color: blue
+    color: blue;
 }
+
+.invisble {
+    display: none;
+    
+}
+
+
 
 

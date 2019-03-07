@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {render} from 'react-dom';
-import ExampleComponent from './Components/ExampleComponent.jsx';
-import HousingContainer from './Containers/HousingContainer.jsx';
+import GameSettings from './Containers/GameSettings.jsx';
 
 class App extends Component {
     constructor(props) {
@@ -11,9 +10,8 @@ class App extends Component {
     render() { 
         return (
     <div>
-        <h1>Welcome To SMAST</h1>   
-        <HousingContainer />  
-        <ExampleComponent />
+        <h1>Welcome To SMAST, Goodluck to everyone</h1>   
+        <GameSettings />
     </div>        
     
         );
