@@ -25,8 +25,21 @@ class HousingContainer extends Component {
         // }
     }
        
+ 
+    randomize(arr){
     
-
+            let newArr = [];
+           arr.forEach((value, index)=>{
+               
+               newArr.push({player: value, aNumber: (Math.random()*100) })
+               
+           })
+           newArr.sort(function(a, b){ return b.aNumber - a.aNumber})
+           let lastArr = [];
+           newArr.forEach((value) => {lastArr.push(value.player)})
+           return lastArr
+   
+    }
 
 
 
@@ -39,8 +52,11 @@ class HousingContainer extends Component {
     render() {
      
         
-     console.log("this.props.string", this.props.string)
-     this.playersArr = this.props.string.split(", ")
+     console.log('props', this.props.functionality)
+     this.playersArr = this.randomize(this.props.string.split(", ")).slice();
+     
+     let functionalityVariable = this.props.functionality;
+     let round = this.props.round
      // this.theNames = this.props.playerNames;
      this.players = this.playersArr.map((each, index)=>{
          // let comp = React.createElement(Bracket);
@@ -48,14 +64,16 @@ class HousingContainer extends Component {
          return React.createElement(Bracket, {
              onePlayerName: each,
              key: index + 1,
-             className: 'cl' + (index + 1)
+             className:  'cl' + (index + 1) + "round" + round, 
+             functionality: functionalityVariable,
+             
          }) 
      }) 
     
         return (
 
                 <div className="play-area">
-                    {this.players}
+                    {this.players.slice()}
                 </div>
           
         );

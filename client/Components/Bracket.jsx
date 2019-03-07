@@ -1,40 +1,26 @@
 import React, { Component } from 'react';
 
-let progression = false;
 
-const advanceWinner = (e) => {
-    let winnerClass = e.target.className;
-    let progression = true
-    let winnerName = e.target.value;
-    Bracket();
-    progression = false;
-}  
+//advanceWinner should modify the string in the main state until half of the original players have been marked as winners 
 
 
 
 const Bracket = (props) => {
-    if (progression === false){
+   
         console.log('called from bracket')
         let name = props.onePlayerName
         let aclass = props.className
+        let useIt = props.functionality
+
     
         return (
         <div className={aclass}>
-            <button value={name} onClick={advanceWinner}>{name}</button>
+            <button value={name} onClick={useIt}>{name}</button>
         </div>
 )
-    }
+   
 
-    if (progression === true){
-        console.log('activated progression mode');
-        return (
-            <div className={winnerClass + 'a'}>
-            <button onClick={advanceWinner}>{winnerName}</button>
-            </div>
-        )
 
-    }
-    
 
 }
 

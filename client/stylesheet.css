@@ -14,18 +14,18 @@ html {
 
 	display: grid;
 	max-width: 100%;
-	grid-template-columns: 25% 10% 10% 10% 10% 10% 25%;
+	grid-template-columns: 50%  50%;
 	grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px; 
 	height: 100%;
 	grid-template-areas: 
-		"cl1 cl1a cl1aa cl1aaa cl1aaaa cl1aaaaa cl2"
-		"cl3 dl1 el1 fl1 hl1 il1 cl4"
-		"cl5 dl1 el1 fl1 hl1 il1 cl6"
-		"cl7 dl1 el1 fl1 hl1 il1 cl8"
-		"cl9 dl1 el1 fl1 hl1 il1 cl10"
-        "cl11 dl1 el1 fl1 hl1 il1 cl12"
-		"cl13 dl1 el1 fl1 hl1 il1 cl14"
-		"cl15 dl1 el1 fl1 hl1 il1 cl16";
+		"cl1 cl2"
+		"cl3 cl4"
+		"cl5 cl6"
+		"cl7 cl8"
+		"cl9 cl10"
+        "cl11 cl12"
+		"cl13 cl14"
+		"cl15 cl16";
 		
 }
 
@@ -96,24 +96,3 @@ html {
 .cl16 {
     grid-area: cl16;
 }
-
-.cl1a {
-    grid-area: cl1a;
-}
-
-.cl1aa {
-    grid-area: cl1aa;
-}
-
-.cl1aaa {
-    grid-area: cl1aaa;
-}
-
-.cl1aaaa {
-    grid-area: cl1aaaa;
-}
-
-.cl1aaaaa {
-    grid-area: cl1aaaaa;
-}
-

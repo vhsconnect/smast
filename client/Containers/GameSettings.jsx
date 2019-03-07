@@ -7,47 +7,85 @@ class GameSettings extends Component {
         
 		this.jsxArray = [];
         this.state = {
+            anounceWinner: "",
             numPlayers: "",
 			playerNames: [],
             playerNamesString: "",
-            playerNamesTemp: ""
+            playerNamesTemp: "",
+            totalPlayers: 0,
+            round: 1,
+            winnersString: "",
+            winnersArray:[],
+            maxRound: 4
             
         };
         this.getPlayers = this.getPlayers.bind(this); 
         this.generateBrackets = this.generateBrackets.bind(this);
+        this.sendWinnersUp = this.sendWinnersUp.bind(this);
     }
     getPlayers(e){
         console.log('called from getPlayers')
         this.setState({playerNamesTemp: e.target.value})
         
     }    
-	
+    
 
     generateBrackets(e){
         // let string = this.state.playerNamesString;
         // let returnArray = string.split(", ");
         // console.log(returnArray);
-        this.setState({playerNamesString: this.state.playerNamesTemp})
+
+        this.setState({playerNamesString: this.state.playerNamesTemp, totalPlayers: this.state.playerNamesTemp.split(", ").length})
         e.preventDefault();
 		}
 	
+    
+    sendWinnersUp(e){
+        console.log('winnersArray', this.state.winnersArray)
+        console.log("totalPlayers", this.state.totalPlayers)
+
+        let winner = e.target.value;
+        let toBePushed = this.state.winnersArray.push(winner);
+        this.winnersArray = toBePushed.slice
+        if (this.state.winnersArray.length === (this.state.totalPlayers) / 2 ){
+            if (this.state.totalPlayers / 2 === 1){
+                this.declareWinner(winner)
+            } else {
+                this.setState( {playerNamesString: this.state.winnersArray.join(", "), round: this.state.round++, totalPlayers: this.state.totalPlayers / 2, winnersArray: [].slice()} )
+            }
+            
+        }
+
         
+    }
+        
+    declareWinner(x){
+        this.setState({anounceWinner: x})
+
+    }
     
     
     render(){
-        return (
-            <div>
-                <button className="primarybtns" >Generate Tournament </button>
-                <button className="primarybtns" >Load</button>
-                <form onSubmit={this.generateBrackets}>
-                    <label>Input players here - 4, 8 or 16 players
-                    <input type="text" name="playerNumber" value={this.state.playerNamesTemp} onChange={this.getPlayers} />
-                    </label>
-                    <input type="submit" value="Submit" />                    
-                </form>
-				< HousingContainer string={this.state.playerNamesString} />
-            </div>
-        )
+
+        if (this.state.anounceWinner == ""){
+            return (
+                <div>
+                    <h1 className></h1>
+                    <form onSubmit={this.generateBrackets}>
+                        <label>Input players here - 4, 8 or 16 players
+                        <input type="text" name="playerNumber" value={this.state.playerNamesTemp} onChange={this.getPlayers}  />
+                        </label>
+                        <input type="submit" value="Submit" />                    
+                    </form>
+                    < HousingContainer string={this.state.playerNamesString} functionality={this.sendWinnersUp} round={this.state.round} />
+                </div>
+            )
+        } else {
+            return (
+                <h1>{this.state.anounceWinner} wins ༼ つ ◕_◕ ༽つ </h1>
+            )
+        }
+        
     }
 }
 
