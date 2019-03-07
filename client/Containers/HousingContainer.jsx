@@ -37,6 +37,7 @@ class HousingContainer extends Component {
 // })
 
     render() {
+     
         
      console.log("this.props.string", this.props.string)
      this.playersArr = this.props.string.split(", ")
@@ -46,13 +47,14 @@ class HousingContainer extends Component {
          console.log('*^&%^&#$%^');
          return React.createElement(Bracket, {
              onePlayerName: each,
-             key: index
+             key: index + 1,
+             className: 'cl' + (index + 1)
          }) 
      }) 
     
         return (
 
-                <div>
+                <div className="play-area">
                     {this.players}
                 </div>
           

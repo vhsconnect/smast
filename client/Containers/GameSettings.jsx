@@ -9,7 +9,8 @@ class GameSettings extends Component {
         this.state = {
             numPlayers: "",
 			playerNames: [],
-			playerNamesString: ""
+            playerNamesString: "",
+            playerNamesTemp: ""
             
         };
         this.getPlayers = this.getPlayers.bind(this); 
@@ -17,16 +18,16 @@ class GameSettings extends Component {
     }
     getPlayers(e){
         console.log('called from getPlayers')
-        this.setState({playerNamesString: e.target.value})
+        this.setState({playerNamesTemp: e.target.value})
         
     }    
 	
 
     generateBrackets(e){
-        let string = this.state.playerNamesString;
-        let returnArray = string.split(", ");
-        console.log(returnArray);
-        this.setState({playerNames: returnArray.slice()})
+        // let string = this.state.playerNamesString;
+        // let returnArray = string.split(", ");
+        // console.log(returnArray);
+        this.setState({playerNamesString: this.state.playerNamesTemp})
         e.preventDefault();
 		}
 	
@@ -40,11 +41,11 @@ class GameSettings extends Component {
                 <button className="primarybtns" >Load</button>
                 <form onSubmit={this.generateBrackets}>
                     <label>Input players here - 4, 8 or 16 players
-                    <input type="text" name="playerNumber" value={this.state.playerNamesString} onChange={this.getPlayers} />
+                    <input type="text" name="playerNumber" value={this.state.playerNamesTemp} onChange={this.getPlayers} />
                     </label>
                     <input type="submit" value="Submit" />                    
                 </form>
-				< HousingContainer playerNames={this.state.playerNames} string={this.state.playerNamesString} />
+				< HousingContainer string={this.state.playerNamesString} />
             </div>
         )
     }
