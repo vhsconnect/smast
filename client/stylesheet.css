@@ -8,7 +8,23 @@ html {
     
 }
 
+.brackets {
+    background-color: tomato;
+    text-align: center;
+   
+}
 
+
+.game-button {
+    background-color: #fff; /* Green */
+    border: none;
+    color: tomato;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
 
 .play-area {
 
@@ -16,7 +32,10 @@ html {
 	max-width: 100%;
 	grid-template-columns: 50%  50%;
 	grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px; 
-	height: 100%;
+    height: 100%;
+    grid-gap: 5px;
+    /* justify-items: center;
+    align-items: center; */
 	grid-template-areas: 
 		"cl1 cl2"
 		"cl3 cl4"
@@ -28,7 +47,7 @@ html {
 		"cl15 cl16";
 		
 }
-
+/* */ /* */ /* */ /* */ /* */ /* */ /* */ 
 
 .cl1 {
     grid-area: cl1;
@@ -95,4 +114,73 @@ html {
 
 .cl16 {
     grid-area: cl16;
+}
+
+
+
+/* */ /* */ /* */ /* */ /* */ /* */
+
+
+.cl1 .thumb {
+    float: left;
+}
+
+.cl3 .thumb {
+    float: left;
+}
+
+.cl5 .thumb {
+    float: left;
+}
+
+.cl7 .thumb {
+    float: left;
+}
+
+.cl9 .thumb {
+    float: left;
+}
+
+.cl11 .thumb {
+    float: left;
+}
+
+.cl13 .thumb {
+    float: left;
+}
+
+.cl15 .thumb {
+    float: left;
+}
+
+.cl2 .thumb {
+    float: right;
+}
+
+.cl4 .thumb {
+    float: right;
+}
+
+.cl6 .thumb {
+    float: right;
+}
+
+.cl8 .thumb {
+    float: right;
+}
+
+.cl10 .thumb {
+    float: right;
+}
+
+.cl12 .thumb {
+    float: right;
+}
+
+.cl14 .thumb {
+    float: right;
+}
+
+.cl16 .thumb {
+    float: right;
 }

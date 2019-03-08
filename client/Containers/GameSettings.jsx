@@ -16,19 +16,27 @@ class GameSettings extends Component {
             round: 1,
             winnersString: "",
             winnersArray:[],
-            maxRound: 4
+            maxRound: 4,
+    
             
         };
         this.getPlayers = this.getPlayers.bind(this); 
         this.generateBrackets = this.generateBrackets.bind(this);
         this.sendWinnersUp = this.sendWinnersUp.bind(this);
     }
+    
+    // componentDidMount() {
+    //     fetch('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/51.png')
+    //       .then(response => response.json())
+    //       .then(data => this.setState({ data }));
+    //   }
+
+
     getPlayers(e){
         console.log('called from getPlayers')
         this.setState({playerNamesTemp: e.target.value})
         
     }    
-    
 
     generateBrackets(e){
         // let string = this.state.playerNamesString;
@@ -40,18 +48,22 @@ class GameSettings extends Component {
 		}
 	
     
+
     sendWinnersUp(e){
         console.log('winnersArray', this.state.winnersArray)
         console.log("totalPlayers", this.state.totalPlayers)
 
         let winner = e.target.value;
+        let pokemon = e.target.pokeId;
+     
         let toBePushed = this.state.winnersArray.push(winner);
-        this.winnersArray = toBePushed.slice
+        this.winnersArray = toBePushed.slice; //wtf?
+      
         if (this.state.winnersArray.length === (this.state.totalPlayers) / 2 ){
             if (this.state.totalPlayers / 2 === 1){
                 this.declareWinner(winner)
             } else {
-                this.setState( {playerNamesString: this.state.winnersArray.join(", "), round: this.state.round++, totalPlayers: this.state.totalPlayers / 2, winnersArray: [].slice()} )
+                this.setState( { playerNamesString: this.state.winnersArray.join(", "), round: this.state.round++, totalPlayers: this.state.totalPlayers / 2, winnersArray: [].slice() })
             }
             
         }
@@ -77,7 +89,7 @@ class GameSettings extends Component {
                         </label>
                         <input type="submit" value="Submit" />                    
                     </form>
-                    < HousingContainer string={this.state.playerNamesString} functionality={this.sendWinnersUp} round={this.state.round} />
+                    < HousingContainer string={this.state.playerNamesString} functionality={this.sendWinnersUp} round={this.state.round} pokeId={this.state.pokeId}/>
                 </div>
             )
         } else {

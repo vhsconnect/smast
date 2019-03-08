@@ -8,7 +8,7 @@ class HousingContainer extends Component {
         this.state = {
             // playerNames: this.props.playerNames.slice() 
         };
-        
+        this.cache = {}
         
     }
     
@@ -57,15 +57,21 @@ class HousingContainer extends Component {
      
      let functionalityVariable = this.props.functionality;
      let round = this.props.round
+     
+     
      // this.theNames = this.props.playerNames;
      this.players = this.playersArr.map((each, index)=>{
+        let randomPokeGenerator = Math.floor(Math.random()*150)
          // let comp = React.createElement(Bracket);
-         console.log('*^&%^&#$%^');
+            if (!this.cache[each]){
+                this.cache[each] = randomPokeGenerator;
+            }
          return React.createElement(Bracket, {
              onePlayerName: each,
              key: index + 1,
-             className:  'cl' + (index + 1) + "round" + round, 
+             className:  'cl' + (index + 1), 
              functionality: functionalityVariable,
+             pokeId: this.cache[each]
              
          }) 
      }) 
