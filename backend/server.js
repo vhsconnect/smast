@@ -44,9 +44,47 @@ smastRoutes.get('/:name', (req, res) => {
     Players2.findOne({name: query}, (err, doc) => {
         if (err) console.log('Internal error');
         else if (!doc) console.log('Semimase, we cant find what you re looking for :/');
-        else res.json(doc);
+        else res.send(doc);
     })
 });
+
+// smastRoutes.get('/all', (req, res) => {
+//     //grab name from params
+   
+//     Players2.find({}, (err, doc) => {
+//         console.log(doc);
+//         if (err) console.log('Internal error');
+//         // else if (!doc) console.log('Semimase, we cant find what you re looking for :/');
+//         else {
+//             var data = {};
+//             doc.forEach((eachData)=>{
+//                 data[eachData._id] = eachData;
+//             })
+//             res.send(data);
+//         };
+//     })
+// })
+
+
+smastRoutes.get('/all', (req, res) => {
+    //grab name from params
+   
+    Players2.find({})
+    .then((doc)=>{
+        var data = {};
+            doc.forEach((eachData)=>{
+                data[eachData._id] = eachData;
+            })
+            res.send(data);
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+})
+
+
+
+
 
 // smastRoutes.post('/add', (req, res) => {
 //     let player = new Players2(req.body);

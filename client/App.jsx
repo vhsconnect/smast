@@ -9,8 +9,8 @@ class App extends Component {
 
     render() { 
         return (
-    <div>
-        <h1>Welcome To SMAST, Goodluck to everyone</h1>   
+    <div className={"welcome"}>
+        <h1>S.M.A.S.T</h1>
         <GameSettings />
     </div>        
     

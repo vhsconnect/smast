@@ -25,11 +25,11 @@ class GameSettings extends Component {
         this.sendWinnersUp = this.sendWinnersUp.bind(this);
     }
     
-    // componentDidMount() {
-    //     fetch('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/51.png')
-    //       .then(response => response.json())
-    //       .then(data => this.setState({ data }));
-    //   }
+    componentDidMount() {
+        fetch('/')
+          .then(response => response.json())
+          .then(data => this.setState({ data }));
+      }
 
 
     getPlayers(e){
@@ -82,13 +82,15 @@ class GameSettings extends Component {
         if (this.state.anounceWinner == ""){
             return (
                 <div>
-                    <h1 className></h1>
+                    
                     <form onSubmit={this.generateBrackets}>
-                        <label>Input players here - 4, 8 or 16 players
-                        <input type="text" name="playerNumber" value={this.state.playerNamesTemp} onChange={this.getPlayers}  />
-                        </label>
-                        <input type="submit" value="Submit" />                    
+                        <p>Input players here - 4, 8 or 16 players - use comma-seperated-values</p>
+                        <input className="userInput" type="text" name="playerNumber" value={this.state.playerNamesTemp} onChange={this.getPlayers}  />   
+                        <hr />  
+                        <input className="mainButton" type="submit" value="Launch" /> 
+                                       
                     </form>
+                   
                     < HousingContainer string={this.state.playerNamesString} functionality={this.sendWinnersUp} round={this.state.round} pokeId={this.state.pokeId}/>
                 </div>
             )

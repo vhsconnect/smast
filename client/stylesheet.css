@@ -1,11 +1,20 @@
 html {
     box-sizing: border-box;
-    color: blue;
+    color: grey;
+    font-family: 'Courier';
 }
 
 .invisble {
     display: none;
     
+}
+
+
+.welcome {
+    text-align: center;
+    border: 2px solid #544D4B;
+    margin: 15px;
+    padding-bottom: 30px;
 }
 
 .brackets {
@@ -14,9 +23,13 @@ html {
    
 }
 
+.userInput {
+    width: 70%;
+    height: 25px;
+}
 
 .game-button {
-    background-color: #fff; /* Green */
+    background-color: #fff; 
     border: none;
     color: tomato;
     padding: 15px 32px;
@@ -24,6 +37,27 @@ html {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+}
+
+.game-button:hover{
+    color: #fff;
+    background-color: tomato;
+}
+
+
+
+.mainButton {
+    background-color: grey; 
+    border: none;
+    color: #fff;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 3px;
+   
+
 }
 
 .play-area {
