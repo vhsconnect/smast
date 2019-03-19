@@ -17,6 +17,7 @@ class GameSettings extends Component {
             winnersString: "",
             winnersArray:[],
             maxRound: 4,
+           
     
             
         };
@@ -55,7 +56,7 @@ class GameSettings extends Component {
 
         let winner = e.target.value;
         let pokemon = e.target.pokeId;
-     
+        
         let toBePushed = this.state.winnersArray.push(winner);
         this.winnersArray = toBePushed.slice; //wtf?
       
@@ -78,7 +79,7 @@ class GameSettings extends Component {
     
     
     render(){
-
+       
         if (this.state.anounceWinner == ""){
             return (
                 <div>

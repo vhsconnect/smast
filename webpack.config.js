@@ -1,5 +1,5 @@
 var path = require('path');
-// var webpack = require('webpack');
+var webpack = require('webpack');
 
 
 // var BUILD_DIRECTORY =  path.resolve(__dirname, './build');
@@ -7,16 +7,16 @@ var path = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: '../client/index.js',
+  entry: './client/index.js',
     //  entry: './client/index.js',
   output: {
-   path: path.resolve(__dirname, 'build'),
+   path: path.resolve('build'),
     // path: path.resolve(__dirname, '../build'),
     filename: 'bundle.js'
   },
   module: {
       rules: [
-          {
+          {    
               test: /\.jsx?$/,
               exclude: /(node_modules)/,
               use: {

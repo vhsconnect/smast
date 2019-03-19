@@ -9,8 +9,9 @@ const path = require('path');
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '../build')))
-app.use(express.static('../client'));
+// app.use(express.static(path.join(__dirname, './build'))) -> also works
+app.use(express.static('./client'));
+app.use(express.static('./build'));
 
 mongoose.connect('mongodb://localhost/smastmain', {useNewUrlParser: true})
 
