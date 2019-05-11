@@ -1,19 +1,19 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const cors = require('cors');
+// const cors = require('cors');
 const PORT = 3000; 
 const mongoose = require('mongoose');
-const Players2 = require('./players.model');
+// const Players2 = require('./players.model');
 const path = require('path');
 
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.json());
 // app.use(express.static(path.join(__dirname, './build'))) -> also works
 app.use(express.static('./client'));
 app.use(express.static('./build'));
 
-mongoose.connect('mongodb://localhost/smastmain', {useNewUrlParser: true})
+// mongoose.connect('mongodb://localhost/smastmain', {useNewUrlParser: true})
 
 //alternative for connection code, would handle promise from connect method to console.log success message.
 // .then(res => console.log('connected to MongoDB'))
