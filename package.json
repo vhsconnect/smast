@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production webpack",
-    "start": "nodemon backend/server.js",
+    "start": "nodemon server.js",
     "webpack": "webpack"
   },
   "repository": {
@@ -21,9 +21,7 @@
   "homepage": "https://github.com/vhsconnect/smast#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "cors": "^2.8.5",
     "express": "^4.16.4",
-    "mongoose": "^5.4.17",
     "webpack-dev-server": "^3.2.1"
   },
   "devDependencies": {
