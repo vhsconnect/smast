@@ -4,9 +4,9 @@ import lib from '../../lib/functions'
 let cache = {}
 
 let HousingContainer = (props) => {
-
-	let playersArr = lib.randomize(props.string.split(", ")).slice();
-	let functionalityVariable = props.functionality;
+	let playersArr;
+	console.log(props.round, 'props.round')
+	props.round === 1 ? playersArr = lib.randomize(props.string.split(", ")) : playersArr = props.string.split(", ");
 	let players = playersArr.map((each, index) => {
 		//if pokemonID hasnt been assigned to player, assign it then cache it
 		if (!cache[each]) cache[each] = Math.floor(Math.random() * 150)
@@ -15,14 +15,14 @@ let HousingContainer = (props) => {
 			onePlayerName: each,
 			key: index + 1,
 			className: 'cl' + (index + 1),
-			functionality: functionalityVariable,
+			functionality: props.functionality,
 			pokeId: cache[each]
 		})
 	})
 
 	return (
 		<div className="play-area">
-			{players.slice()}
+			{players}
 		</div>
 	);
 }

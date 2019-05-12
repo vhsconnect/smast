@@ -23,35 +23,32 @@ class GameSettings extends Component {
 		this.sendWinnersUp = this.sendWinnersUp.bind(this);
 	}
 
-	componentDidMount() {
-		fetch('/')
-			.then(response => response.json())
-			.then(data => this.setState({ data }));
-	}
-
 
 	getPlayers(e) {
-		console.log('called from getPlayers')
 		this.setState({ playerNamesTemp: e.target.value })
 	}
 
 	generateBrackets(e) {
-		this.setState({ playerNamesString: this.state.playerNamesTemp, totalPlayers: this.state.playerNamesTemp.split(", ").length })
+		this.setState({ 
+			playerNamesString: this.state.playerNamesTemp, 
+			totalPlayers: this.state.playerNamesTemp.split(", ").length 
+		})
 		e.preventDefault();
 	}
 
 	sendWinnersUp(e) {
-
 		let winner = e.target.value;
-		let pokemon = e.target.pokeId;
-		let toBePushed = this.state.winnersArray.push(winner);
-		this.winnersArray = toBePushed.slice; //wtf?
-
+		this.state.winnersArray.push(winner);
 		if (this.state.winnersArray.length === (this.state.totalPlayers) / 2) {
 			if (this.state.totalPlayers / 2 === 1) {
 				this.declareWinner(winner)
 			} else {
-				this.setState({ playerNamesString: this.state.winnersArray.join(", "), round: this.state.round++, totalPlayers: this.state.totalPlayers / 2, winnersArray: [].slice() })
+				this.setState({
+					playerNamesString: this.state.winnersArray.join(", "),
+					round: this.state.round + 1,
+					totalPlayers: this.state.totalPlayers / 2,
+					winnersArray: []
+				})
 			}
 		}
 	}
@@ -62,19 +59,27 @@ class GameSettings extends Component {
 
 
 	render() {
-		if (this.state.anounceWinner == "") {
+		if (this.state.anounceWinner === "") {
 			return (
 				<div>
-
 					<form onSubmit={this.generateBrackets}>
 						<p>Input players here - 4, 8 or 16 players - use comma-seperated-values</p>
-						<input className="userInput" type="text" name="playerNumber" value={this.state.playerNamesTemp} onChange={this.getPlayers} />
+						<input
+							className="userInput"
+							type="text"
+							name="playerNumber"
+							value={this.state.playerNamesTemp}
+							onChange={this.getPlayers}
+						/>
 						<hr />
 						<input className="mainButton" type="submit" value="Launch" />
-
 					</form>
-
-					< HousingContainer string={this.state.playerNamesString} functionality={this.sendWinnersUp} round={this.state.round} pokeId={this.state.pokeId} />
+					< HousingContainer
+						string={this.state.playerNamesString}
+						functionality={this.sendWinnersUp}
+						round={this.state.round}
+						pokeId={this.state.pokeId}
+					/>
 				</div>
 			)
 		} else {
