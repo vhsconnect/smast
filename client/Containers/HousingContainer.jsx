@@ -8,7 +8,7 @@ let HousingContainer = (props) => {
 	console.log(props.round, 'props.round')
 	props.round === 1 ? playersArr = lib.randomize(props.string.split(", ")) : playersArr = props.string.split(", ");
 	let players = playersArr.map((each, index) => {
-		//if pokemonID hasnt been assigned to player, assign it then cache it
+		//First Turn: if pokemonID hasnt been assigned to player, assign it then cache it
 		if (!cache[each]) cache[each] = Math.floor(Math.random() * 150)
 
 		return React.createElement(Bracket, {

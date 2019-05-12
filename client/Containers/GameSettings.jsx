@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HousingContainer from './HousingContainer.jsx';
+import lib from '../../lib/functions'
 
 class GameSettings extends Component {
 	constructor(props) {
@@ -17,46 +18,11 @@ class GameSettings extends Component {
 			winnersArray: [],
 			maxRound: 4,
 		};
-
-		this.getPlayers = this.getPlayers.bind(this);
-		this.generateBrackets = this.generateBrackets.bind(this);
-		this.sendWinnersUp = this.sendWinnersUp.bind(this);
+		this.getPlayers = lib.getPlayers.bind(this);
+		this.generateBrackets = lib.generateBrackets.bind(this);
+		this.sendWinnersUp = lib.sendWinnersUp.bind(this);
+		this.declareWinner = lib.declareWinner.bind(this);
 	}
-
-
-	getPlayers(e) {
-		this.setState({ playerNamesTemp: e.target.value })
-	}
-
-	generateBrackets(e) {
-		this.setState({ 
-			playerNamesString: this.state.playerNamesTemp, 
-			totalPlayers: this.state.playerNamesTemp.split(", ").length 
-		})
-		e.preventDefault();
-	}
-
-	sendWinnersUp(e) {
-		let winner = e.target.value;
-		this.state.winnersArray.push(winner);
-		if (this.state.winnersArray.length === (this.state.totalPlayers) / 2) {
-			if (this.state.totalPlayers / 2 === 1) {
-				this.declareWinner(winner)
-			} else {
-				this.setState({
-					playerNamesString: this.state.winnersArray.join(", "),
-					round: this.state.round + 1,
-					totalPlayers: this.state.totalPlayers / 2,
-					winnersArray: []
-				})
-			}
-		}
-	}
-
-	declareWinner(x) {
-		this.setState({ anounceWinner: x })
-	}
-
 
 	render() {
 		if (this.state.anounceWinner === "") {
